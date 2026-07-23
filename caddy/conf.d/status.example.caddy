@@ -1,0 +1,5 @@
+# Uptime Kuma reverse proxy example
+
+status.example.com {
+    reverse_proxy localhost:3001
+}

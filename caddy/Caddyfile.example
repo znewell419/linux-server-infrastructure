@@ -1,0 +1,31 @@
+{
+        # Restrict the admin interface to a local unix file socket
+        admin "unix///run/caddy/admin.socket"
+}
+
+# Static website hosting example
+
+http://example.com, http://www.example.com {
+
+        # Replace with your website directory
+        root * /srv/web/example-site
+
+        encode zstd gzip
+
+        try_files {path} {path}.html {path}/
+
+        file_server
+
+        header {
+                X-Content-Type-Options "nosniff"
+                X-Frame-Options "SAMEORIGIN"
+                Referrer-Policy "strict-origin-when-cross-origin"
+        }
+}
+
+# Import additional site configurations
+# Example:
+# - reverse proxy definitions
+# - service-specific configs
+
+import conf.d/*
