@@ -70,13 +70,17 @@ Deployment workflow:
 
 ## Repository Structure
 
-caddy/          Reverse proxy configuration examples
-cloudflare/     Cloudflare Tunnel configuration examples
-docker/         Docker Compose deployments
-docs/           System administration documentation
-monitoring/     Monitoring configuration
-scripts/        Linux automation scripts
-uptime-kuma/    Uptime monitoring documentation
+## Repository Structure
+
+| Directory | Description |
+|-----------|-------------|
+| `caddy/` | Reverse proxy configuration examples and documentation |
+| `cloudflare/` | Cloudflare Tunnel configuration examples |
+| `docker/` | Docker Compose deployments and service configurations |
+| `docs/` | System administration documentation and guides |
+| `monitoring/` | Monitoring documentation and configuration references |
+| `scripts/` | Bash automation and system maintenance scripts |
+| `uptime-kuma/` | Uptime monitoring documentation |
 
 ## Lessons Learned
 
