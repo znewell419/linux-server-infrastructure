@@ -1,8 +1,8 @@
 # Linux Server Infrastructure Homelab
 
-A self-hosted Linux server environment built to practice system administration, networking, security, automation, and monitoring.
+A self-hosted Linux server environment built to develop hands-on experience with system administration, networking, security, automation, and monitoring.
 
-This project documents the design, deployment, and maintenance of a Linux-based infrastructure environment while developing hands-on systems administration skills.
+This project documents the design, deployment, security hardening, and ongoing maintenance of a Linux-based infrastructure environment.
 
 ## Hardware
 
@@ -18,19 +18,20 @@ This project documents the design, deployment, and maintenance of a Linux-based 
 - Cloudflare Tunnel
 - Cloudflare Zero Trust Access
 - Uptime Kuma monitoring
-- Prometheus metrics
+- Prometheus metrics collection
 - Grafana dashboards
+- cAdvisor container monitoring
 
 ## Architecture
 
 This infrastructure uses a layered approach:
 
-- Cloudflare Tunnel provides secure external access without exposing inbound service ports.
-- Caddy handles reverse proxying and HTTPS management.
-- Docker manages application services and deployment.
-- Prometheus collects system and container metrics.
-- Grafana provides visualization and dashboards.
-- Uptime Kuma monitors service availability and uptime.
+- **Cloudflare Tunnel** provides secure external access without exposing inbound service ports.
+- **Caddy** handles reverse proxy routing.
+- **Docker** manages application deployment and service isolation.
+- **Prometheus** collects system and container metrics.
+- **Grafana** provides visualization and dashboards.
+- **Uptime Kuma** monitors service availability and uptime.
 
 ## Security
 
@@ -40,7 +41,7 @@ Implemented:
 - Password authentication disabled
 - Remote administration through Tailscale
 - No publicly exposed service ports
-- Cloudflare Access protection
+- Cloudflare Zero Trust Access protection
 - Services isolated through Docker containers
 - Credentials and sensitive information excluded from version control
 
@@ -67,6 +68,16 @@ Deployment workflow:
 5. Secure external access through Cloudflare Tunnel
 6. Implement monitoring and alerting
 
+## Repository Structure
+
+caddy/          Reverse proxy configuration examples
+cloudflare/     Cloudflare Tunnel configuration examples
+docker/         Docker Compose deployments
+docs/           System administration documentation
+monitoring/     Monitoring configuration
+scripts/        Linux automation scripts
+uptime-kuma/    Uptime monitoring documentation
+
 ## Lessons Learned
 
 Through this project, I have gained hands-on experience with:
@@ -77,8 +88,9 @@ Through this project, I have gained hands-on experience with:
 - DNS and HTTPS concepts
 - Secure remote access
 - Monitoring and observability
-- Troubleshooting infrastructure issues
+- Infrastructure troubleshooting
+- Bash automation
 
 ## Purpose
 
-This project documents my ongoing work building and maintaining a Linux-based infrastructure environment while developing systems administration skills.
+This project serves as a portfolio demonstration of my continued development in Linux systems administration and infrastructure management.
