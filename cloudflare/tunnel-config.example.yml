@@ -1,0 +1,23 @@
+# Example Cloudflare Tunnel configuration
+# Production values are intentionally removed
+
+tunnel: YOUR-TUNNEL-ID
+
+credentials-file: /etc/cloudflared/YOUR-TUNNEL-ID.json
+
+ingress:
+
+  # Portfolio website
+  - hostname: example.com
+    service: http://localhost:80
+
+  # Grafana dashboard
+  - hostname: grafana.example.com
+    service: http://localhost:3000
+
+  # Uptime Kuma status page
+  - hostname: status.example.com
+    service: http://localhost:3001
+
+  # Required catch-all rule
+  - service: http_status:404
