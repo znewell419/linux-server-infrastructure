@@ -1,0 +1,18 @@
+# Environment files
+.env
+
+# Secrets and credentials
+secrets/
+credentials/
+
+# Keys and certificates
+*.key
+*.pem
+*.crt
+
+# Cloudflare credentials
+*.json
+
+# OS/editor files
+.DS_Store
+*.swp
