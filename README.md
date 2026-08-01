@@ -98,3 +98,13 @@ Through this project, I have gained hands-on experience with:
 ## Purpose
 
 This project serves as a portfolio demonstration of my continued development in Linux systems administration and infrastructure management.
+
+## Hosted Projects
+
+This server infrastructure is used to host:
+
+- [zachnewell.info](https://github.com/znewell419/zachnewell.info) — personal portfolio website hosted on this self-managed Arch Linux server.
+
+Live website:
+
+https://zachnewell.info
