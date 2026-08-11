@@ -84,7 +84,7 @@ HEARTBEAT_SUCCESS=$(journalctl -u heartbeat.service \
     | grep -c "Finished Send server heartbeat to Uptime Kuma.")
 
 if [ "$HEARTBEAT_SUCCESS" -gt 0 ]; then
-    echo "✓ Heartbeat successful within the last 10  minutes"
+    echo "✓ Heartbeat successful within the last 10 minutes"
 else
     echo "✗ No successful heartbeat within the last 10 minutes"
     ISSUES=$((ISSUES+1))
