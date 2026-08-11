@@ -69,51 +69,72 @@ chmod +x arch-system-maintenance.sh
 
 ---
 
-## Linux Server Health Check
+### ZDN Server Health Check
 
 **File:**
 
 ```text
-health-check.sh
+zdn-health-check.sh
 ```
 
-A system health monitoring script designed to provide a quick overview of server status and identify potential issues.
+A server health monitoring script designed to provide a quick overview of system status and identify potential issues.
 
-Features:
+The script is used by the `zdn-health.service` systemd service and runs automatically through `zdn-health.timer` every five minutes.
+
+#### Features
 
 - Displays hostname and system information
 - Reports kernel version
 - Checks system uptime
 - Displays CPU load and memory usage
-- Monitors disk usage
+- Monitors root filesystem usage
 - Detects failed systemd services
 - Checks Docker service status
-- Displays running Docker containers
+- Displays the number of running Docker containers
 - Verifies important services:
   - SSH
   - Caddy
   - Cloudflared
-- Uses exit codes for future automation and monitoring integration
+- Verifies that the server heartbeat has successfully completed within the last 10 minutes
+- Uses exit codes for automation and monitoring integration
+- Logs health check output to `/var/log/zdn-health.log`
 
-Exit codes:
+#### Heartbeat Monitoring
+
+The health check includes a dedicated heartbeat check to prevent false positives caused by historical systemd failure states.
+
+Because `heartbeat.service` is a oneshot service, systemd may retain a previous failure state even after a subsequent heartbeat succeeds. The health check therefore verifies recent successful heartbeat executions rather than relying solely on the service's current systemd state.
+
+The heartbeat runs approximately once per minute through `heartbeat.timer`. A successful heartbeat within the previous 10 minutes is considered healthy.
+
+#### Exit Codes
 
 ```text
 0 = Healthy
 1 = Issues detected
 ```
 
-Requirements:
+#### Requirements
 
 - Linux system using systemd
 - User with sudo privileges
-- Docker installed (for Docker status checks)
+- Docker installed for Docker status checks
+- `heartbeat.service` and `heartbeat.timer` configured if heartbeat monitoring is desired
 
-Run:
+#### Run Manually
 
 ```bash
-chmod +x health-check.sh
-./health-check.sh
+chmod +x zdn-health-check.sh
+./zdn-health-check.sh
 ```
+
+The production health check is installed at:
+
+```text
+/usr/local/bin/zdn-health-check.sh
+```
+
+and is executed automatically by systemd.
 
 ---
 
