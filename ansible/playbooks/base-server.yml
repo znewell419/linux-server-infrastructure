@@ -1,0 +1,8 @@
+---
+- name: Configure base servers
+  hosts: servers
+  become: true
+  gather_facts: false
+
+  roles:
+    - base_server

@@ -1,0 +1,12 @@
+---
+- name: Configure servers
+  hosts: servers
+  become: true
+  gather_facts: true
+
+  roles:
+    - base_server
+    - docker
+    - webserver
+    - fail2ban
+    - ssh

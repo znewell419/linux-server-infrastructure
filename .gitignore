@@ -16,3 +16,6 @@ credentials/
 # OS/editor files
 .DS_Store
 *.swp
+
+# Ansible
+ansible/inventory.ini

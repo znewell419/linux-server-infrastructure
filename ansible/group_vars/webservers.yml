@@ -1,0 +1,3 @@
+---
+web_server: true
+server_info_path: /etc/webserver-info.txt

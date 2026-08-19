@@ -1,0 +1,60 @@
+---
+- name: Ensure Caddy is installed
+  community.general.pacman:
+    name: "{{ web_server_package }}"
+    state: present
+
+- name: Generate server information
+  ansible.builtin.template:
+    src: server-info.j2
+    dest: "{{ server_info_path }}"
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Deploy Caddyfile
+  ansible.builtin.template:
+    src: Caddyfile.j2
+    dest: /etc/caddy/Caddyfile
+    owner: root
+    group: root
+    mode: '0644'
+    validate: 'caddy validate --config %s --adapter caddyfile'
+  notify:
+    - Reload Caddy
+
+- name: Deploy Grafana Caddy configuration
+  ansible.builtin.template:
+    src: conf.d/grafana.caddy.j2
+    dest: /etc/caddy/conf.d/grafana.caddy
+    owner: root
+    group: root
+    mode: '0644'
+  notify:
+    - Reload Caddy
+
+- name: Deploy Kuma Caddy configuration
+  ansible.builtin.template:
+    src: conf.d/kuma.caddy.j2
+    dest: /etc/caddy/conf.d/kuma.caddy
+    owner: root
+    group: root
+    mode: '0644'
+  notify:
+    - Reload Caddy
+
+- name: Deploy Status Caddy configuration
+  ansible.builtin.template:
+    src: conf.d/status.caddy.j2
+    dest: /etc/caddy/conf.d/status.caddy
+    owner: root
+    group: root
+    mode: '0644'
+  notify:
+    - Reload Caddy
+
+- name: Ensure Caddy is enabled and running
+  ansible.builtin.systemd_service:
+    name: "{{ web_server_service }}"
+    enabled: true
+    state: started

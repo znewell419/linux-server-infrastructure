@@ -1,0 +1,12 @@
+---
+- name: Manage server services
+  hosts: servers
+  become: true
+  gather_facts: false
+
+  tasks:
+    - name: Ensure Docker service is enabled and running
+      ansible.builtin.systemd_service:
+        name: docker
+        enabled: true
+        state: started

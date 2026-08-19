@@ -1,0 +1,11 @@
+---
+- name: Display webserver information
+  hosts: webservers
+  gather_facts: true
+
+  tasks:
+    - name: Display webserver status
+      ansible.builtin.debug:
+        msg:
+          - "Hostname: {{ ansible_facts['hostname'] }}"
+          - "Web server = {{ web_server }}"

@@ -1,0 +1,25 @@
+---
+- name: Check required packages
+  hosts: servers
+  become: true
+  gather_facts: false
+
+  vars:
+    required_packages:
+      - docker
+      - git
+      - vim
+      - curl
+      - openssh
+
+  tasks:
+    - name: Check package installation status
+      ansible.builtin.package_facts:
+        manager: auto
+
+    - name: Report package status
+      ansible.builtin.debug:
+        msg: >-
+          {{ item }} is
+          {{ 'INSTALLED' if item in ansible_facts.packages else 'NOT INSTALLED' }}
+      loop: "{{ required_packages }}"

@@ -1,0 +1,4 @@
+---
+server_info_path: /etc/server-info.txt
+web_server_package: caddy
+web_server_service: caddy

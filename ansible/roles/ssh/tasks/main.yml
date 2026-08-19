@@ -1,0 +1,10 @@
+---
+- name: Deploy SSH hardening configuration
+  ansible.builtin.template:
+    src: 99-hardening.conf.j2
+    dest: /etc/ssh/sshd_config.d/99-hardening.conf
+    owner: root
+    group: root
+    mode: '0644'
+    validate: '/usr/bin/sshd -t -f %s'
+  notify: Restart SSH

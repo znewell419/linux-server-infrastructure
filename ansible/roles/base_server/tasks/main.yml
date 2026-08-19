@@ -1,0 +1,9 @@
+---
+- name: Update package database
+  community.general.pacman:
+    update_cache: true
+
+- name: Ensure required packages are installed
+  community.general.pacman:
+    name: "{{ required_packages }}"
+    state: present

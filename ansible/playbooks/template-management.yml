@@ -1,0 +1,14 @@
+---
+- name: Manage server information
+  hosts: servers
+  become: true
+  gather_facts: true
+
+  tasks:
+    - name: Generate server information file
+      ansible.builtin.template:
+        src: ../templates/server-info.j2
+        dest: /etc/server-info.txt
+        owner: root
+        group: root
+        mode: '0644'

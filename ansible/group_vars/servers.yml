@@ -1,0 +1,7 @@
+---
+required_packages:
+  - git
+  - vim
+  - curl
+  - openssh
+  - htop
