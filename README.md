@@ -62,18 +62,18 @@ Services are deployed using Docker Compose and managed through Linux system admi
 Deployment workflow:
 
 1. Configure and maintain the Linux server environment
-2. Harden SSH access and remote administration
-3. Deploy containerized services
-4. Configure reverse proxy routing
-5. Secure external access through Cloudflare Tunnel
-6. Implement monitoring and alerting
-
-## Repository Structure
+2. Automate server configuration with Ansible
+3. Harden SSH access and remote administration
+4. Deploy containerized services
+5. Configure reverse proxy routing
+6. Secure external access through Cloudflare Tunnel
+7. Implement monitoring and alerting
 
 ## Repository Structure
 
 | Directory | Description |
 |-----------|-------------|
+| `ansible/` | Ansible automation for server configuration and management |
 | `caddy/` | Reverse proxy configuration examples and documentation |
 | `cloudflare/` | Cloudflare Tunnel configuration examples |
 | `docker/` | Docker Compose deployments and service configurations |
@@ -94,6 +94,7 @@ Through this project, I have gained hands-on experience with:
 - Monitoring and observability
 - Infrastructure troubleshooting
 - Bash automation
+- Ansible and infrastructure-as-code practices
 
 ## Purpose
 
